@@ -1,0 +1,123 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Challenge Documentation v1",
+        "description": "API Reference",
+        "version": "0.0.1",
+        "contact": "iagoeletronicaifsc@gmail.com"
+    },
+    "paths": {
+        "/users": {
+            "post": {
+                "tags": ["User"],
+                "summary": "Create a new user",
+                "description": "Creating a new user",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "name": "Jane Doe",
+                                    "email": "janedoe@example.com"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "User Created"
+                    },
+                    "400": {
+                        "description": "Failed to create user"
+                    }
+                }
+            },
+            "get": {
+                "tags": ["User"],
+                "summary": "List All Users",
+                "description": "Listing all Users",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "name":{
+                                                "type": "string"
+                                            },
+                                            "email": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Error to load users. Verify privilege"
+                    }
+                }
+            }
+        },
+        "/{user_id}": {
+            "get": {
+                "tags": ["User"],
+                "summary": "User Profile Info",
+                "description": "Returns the user profile information",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id":{
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "email": {
+                                                "type": "string"
+                                            },
+                                            "created_at": {
+                                                "type": "date"
+                                            },
+                                            "updated_at": {
+                                                "type": "date"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Error to load users. Verify privilege"
+                    },
+                    "404": {
+                        "description": "User not found. Verify param: user_id"
+                    }
+                }
+            }
+        }
+    }
+}

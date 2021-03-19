@@ -10,7 +10,7 @@ class ShowUserProfileController {
     
     try {
       const user_info = this.showUserProfileUseCase.execute({user_id: String(user_id)})
-      return response.json(user_info)
+      return response.status(200).json(user_info)
     } catch(err) {
       return response.status(404).json({error: err.message})
     }

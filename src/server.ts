@@ -1,3 +1,4 @@
 import { app } from './index'
 
-app.listen(3333, () => console.log('Server is running!'))
+const PORT = 3333
+app.listen(PORT, () => console.log(`Server listening at http://localhost:${PORT}`))
